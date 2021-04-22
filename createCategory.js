@@ -1,7 +1,5 @@
-const mariadb = require("mariadb"),
-    url = "127.0.0.1";
-
-const pool = mariadb.createPool({host: url, user: 'root', password: 'password', database: 'project-guid'});
+const server = require('./server')
+const pool = server.getPool();
 
 function createCategory(req, res) {
     let body = [];

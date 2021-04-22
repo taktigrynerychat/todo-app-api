@@ -1,3 +1,17 @@
+const mariadb = require("mariadb"),
+  dbUrl = "127.0.0.1";
+
+const poolConfig = {host: dbUrl, user: 'root', password: 'password', database: 'project-guid'};
+let pool = mariadb.createPool(poolConfig);
+
+module.exports = {
+    getPool: () => {
+        if(pool) return pool;
+        pool = mariadb.createPool(poolConfig);
+        return pool;
+    }
+};
+
 const login = require('./login');
 const signUp = require('./sign-up');
 const getUserTasks = require('./getUserTasks');

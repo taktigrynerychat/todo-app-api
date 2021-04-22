@@ -1,7 +1,6 @@
-const mariadb = require("mariadb"),
-    url = "127.0.0.1";
+const server = require('./server')
+const pool = server.getPool();
 
-const pool = mariadb.createPool({host: url, user: 'root', password: 'password', database: 'project-guid'});
 
 function getTaskComments(id, req, res) {
     pool.getConnection()
